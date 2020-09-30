@@ -14,7 +14,7 @@
   // N.B.: definire ogni variabile e metodo pubblico come detto in classe
 
   class Square {
-    public $lato;
+    private $lato;
 
     public function __construct($lato = 1) {
       $this -> setLato($lato);
@@ -50,7 +50,7 @@
 
   class Cube extends Square {
     public function getVol() {
-      return $this -> getArea() * $this -> lato;
+      return $this -> getArea() * $this -> getLato();
     }
 
     public function getSup() {
@@ -58,7 +58,7 @@
     }
 
     private function strValues() {
-      return "lato: " . $this -> lato . "<br>"
+      return "lato: " . $this -> getLato() . "<br>"
            . "volume: " . $this -> getVol() . "<br>"
            . "superficie: " . $this -> getSup() . "<br>";
     }
