@@ -17,6 +17,15 @@
     public $lato;
 
     public function __construct($lato = 1) {
+      $this -> setLato($lato);
+    }
+
+    public function getLato() {
+      return $this -> lato;
+    }
+
+    public function setLato($lato) {
+      // controlli integrita'
       $this -> lato = $lato;
     }
 
@@ -28,28 +37,35 @@
       return 4 * $this -> lato;
     }
 
+    private function strValues() {
+      return "lato: " . $this -> lato . "<br>"
+           . "area: " . $this -> getArea() . "<br>"
+           . "per : " . $this -> getPer() . "<br>";
+    }
+
     public function __toString() {
-      return 'Square:<br>'
-           . 'Lato: ' . $this -> lato . '<br>'
-           . 'Area: ' . $this -> getArea() . '<br>'
-           . 'Perimetro: ' . $this -> getPer() . '<br>';
+      return 'Square:<br>' . $this -> strValues() . '<br>';
     }
   }
 
   class Cube extends Square {
     public function getVol() {
-      return $this -> lato * $this -> lato * $this -> lato;
+      return $this -> getArea() * $this -> lato;
     }
 
     public function getSup() {
-      return 6 * $this -> lato * $this -> lato;
+      return 6 * $this -> getArea();
+    }
+
+    private function strValues() {
+      return "lato: " . $this -> lato . "<br>"
+           . "volume: " . $this -> getVol() . "<br>"
+           . "superficie: " . $this -> getSup() . "<br>";
     }
 
     public function __toString() {
       return 'Cube:<br>'
-           . 'Lato: ' . $this -> lato . '<br>'
-           . 'Volume: ' . $this -> getVol() . '<br>'
-           . 'Superficie: ' . $this -> getSup() . '<br>';
+           . $this -> strValues();
     }
   }
 
